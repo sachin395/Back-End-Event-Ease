@@ -1,0 +1,85 @@
+﻿{
+  "Routes": [
+    // UserAPI routing
+    {
+      "UpstreamPathTemplate": "/User/AllEvents",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7059
+          //"https": //localhost:7059/api/User/GetAllEvents
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/GetAllEvents",
+      "DownstreamScheme": "https",
+      //--------------------
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      },
+      //-----------------
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    },
+    //Register
+
+    {
+      "UpstreamPathTemplate": "/Auth/register",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7052
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/register",
+      "DownstreamScheme": "https",
+      //--------------------
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      },
+      //-----------------
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    },
+    // Login Routing
+    {
+      "UpstreamPathTemplate": "/Auth/Login",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7052
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/login",
+      "DownstreamScheme": "https",
+      //--------------------
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      },
+      //-----------------
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    }
+  ]
+}
+//https://localhost:7052/api/Auth/register
